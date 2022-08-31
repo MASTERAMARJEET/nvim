@@ -31,12 +31,18 @@ autocmd("FileType", {
   command = "set nobuflisted",
 })
 
+autocmd("BufWritePre", {
+  group = augroup("_lsp", { clear = true }),
+  callback = function()
+    vim.lsp.buf.format()
+  end
+})
 -- build pdf on save
 local latex = augroup("_latex", { clear = true })
 autocmd("BufWritePost", {
   group = latex,
   pattern = { "*.tex" },
-  command = "silent !pdflatex --interaction=batchmode report.tex 2>&1> /dev/null",
+  command = "silent !pdflatex --interaction=batchmode <afile> 2>&1> /dev/null",
 })
 
 local wrap_spell = augroup("_wrap_spell", { clear = true })
