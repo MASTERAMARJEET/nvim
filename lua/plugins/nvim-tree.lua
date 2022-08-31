@@ -1,55 +1,3 @@
-local vim_globals = {
-  git_hl = 1,
-  highlight_opened_files = 1,
-  root_folder_modifier = ":t",
-  add_trailing = 0,
-  group_empty = 1,
-  icon_padding = " ",
-  symlink_arrow = " -> ",
-  respect_buf_cwd = 1,
-  create_in_closed_folder = 0,
-  refresh_wait = 500,
-  special_files = {
-    ["README.md"] = 1,
-    ["Makefile"] = 1,
-    ["MAKEFILE"] = 1,
-  },
-  show_icons = {
-    git = 1,
-    folders = 1,
-    files = 1,
-    folder_arrows = 0,
-  },
-  icons = {
-    default = "",
-    symlink = "",
-    git = {
-      unstaged = "",
-      staged = "S",
-      unmerged = "",
-      renamed = "➜",
-      deleted = "",
-      untracked = "U",
-      ignored = "◌",
-    },
-    folder = {
-      default = "",
-      open = "",
-      empty = "",
-      empty_open = "",
-      symlink = "",
-    },
-  },
-}
-
-local function global_setup(global_config)
-  for key, value in pairs(global_config) do
-    vim.g["nvim_tree_" .. key] = value
-  end
-end
-
-global_setup(vim_globals)
-
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
   return
@@ -65,19 +13,34 @@ local signs = require("utils").diagnostics_signs
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
+  auto_reload_on_write = true,
+  create_in_closed_folder = false,
   disable_netrw = true,
+  hijack_cursor = false,
   hijack_netrw = true,
+  hijack_unnamed_buffer_when_opening = false,
+  ignore_buffer_on_setup = false,
   open_on_setup = false,
+  open_on_setup_file = false,
   ignore_ft_on_setup = {
     "startify",
     "dashboard",
     "alpha",
   },
   open_on_tab = false,
-  hijack_cursor = true,
-  update_cwd = true,
+  ignore_buf_on_tab_change = {},
+  sort_by = "name",
+  root_dirs = {},
+  prefer_startup_root = false,
+  sync_root_with_cwd = false,
+  reload_on_bufenter = false,
+  respect_buf_cwd = false,
+  on_attach = "disable", -- function(bufnr). If nil, will use the deprecated mapping strategy
+  remove_keymaps = false, -- boolean (disable totally or not) or list of key (lhs)
   diagnostics = {
     enable = true,
+    show_on_dirs = false,
+    debounce_delay = 50,
     icons = {
       hint = signs.hint,
       info = signs.info,
@@ -86,18 +49,70 @@ nvim_tree.setup({
     },
   },
   renderer = {
+    add_trailing = false,
+    group_empty = false,
+    highlight_git = false,
+    full_name = false,
+    highlight_opened_files = "none",
+    root_folder_modifier = ":~",
+    indent_width = 2,
     indent_markers = {
       enable = false,
+      inline_arrows = true,
       icons = {
-        corner = "└ ",
-        edge = "│ ",
-        none = "  ",
+        corner = "└",
+        edge = "│",
+        item = "│",
+        bottom = "─",
+        none = " ",
       },
     },
+    icons = {
+      webdev_colors = true,
+      git_placement = "before",
+      padding = " ",
+      symlink_arrow = " ➛ ",
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = false,
+        git = true,
+      },
+      glyphs = {
+        default = "",
+        symlink = "",
+        bookmark = "",
+        folder = {
+          arrow_closed = "",
+          arrow_open = "",
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+          symlink_open = "",
+        },
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "★",
+          deleted = "",
+          ignored = "◌",
+        },
+      },
+    },
+    special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
+    symlink_destination = true,
+  },
+  hijack_directories = {
+    enable = true,
+    auto_open = true,
   },
   update_focused_file = {
     enable = true,
-    update_cwd = true,
+    update_root = true,
     ignore_list = {},
   },
   system_open = {
@@ -106,35 +121,69 @@ nvim_tree.setup({
   },
   filters = {
     dotfiles = false,
-    custom = {
-      ".git",
-    },
+    custom = { ".git" },
+    exclude = {},
+  },
+  filesystem_watchers = {
+    enable = true,
+    debounce_delay = 50,
   },
   git = {
     enable = true,
     ignore = true,
+    show_on_dirs = true,
     timeout = 500,
   },
   view = {
+    adaptive_size = false,
+    centralize_selection = false,
     width = 30,
     height = 30,
     hide_root_folder = false,
     side = "right",
+    preserve_window_proportions = false,
+    number = false,
+    relativenumber = false,
+    signcolumn = "yes",
     mappings = {
       custom_only = true,
       list = keymaps,
     },
-    number = false,
-    relativenumber = false,
+    float = {
+      enable = false,
+      open_win_config = {
+        relative = "editor",
+        border = "rounded",
+        width = 30,
+        height = 30,
+        row = 1,
+        col = 1,
+      },
+    },
   },
   actions = {
+    use_system_clipboard = true,
     change_dir = {
       enable = true,
       global = false,
+      restrict_above_cwd = false,
+    },
+    expand_all = {
+      max_folder_discovery = 300,
+      exclude = {},
+    },
+    file_popup = {
+      open_win_config = {
+        col = 1,
+        row = 1,
+        relative = "cursor",
+        border = "shadow",
+        style = "minimal",
+      },
     },
     open_file = {
       quit_on_open = false,
-      resize_window = false,
+      resize_window = true,
       window_picker = {
         enable = true,
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
@@ -151,9 +200,30 @@ nvim_tree.setup({
         },
       },
     },
+    remove_file = {
+      close_window = true,
+    },
   },
   trash = {
-    cmd = "trash",
+    cmd = "gio trash",
     require_confirm = true,
+  },
+  live_filter = {
+    prefix = "[FILTER]: ",
+    always_show_folders = true,
+  },
+  log = {
+    enable = false,
+    truncate = false,
+    types = {
+      all = false,
+      config = false,
+      copy_paste = false,
+      dev = false,
+      diagnostics = false,
+      git = false,
+      profile = false,
+      watcher = false,
+    },
   },
 })
