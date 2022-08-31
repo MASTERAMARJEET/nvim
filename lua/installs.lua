@@ -99,10 +99,7 @@ return packer.startup(function(use)
   use({ "goolord/alpha-nvim" })
 
   -- COLORSCHEMES
-  use({
-    "MASTERAMARJEET/material.nvim", -- forked from 'marko-cerovac/material.nvim'
-    branch = "amar",
-  })
+  use({ "marko-cerovac/material.nvim" })
 
   -- CODE EASY
   use({ "numToStr/Comment.nvim" })
