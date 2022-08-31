@@ -9,12 +9,9 @@ local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
-  debug = false,
   sources = {
     formatting.prettier,
-    formatting.black.with({
-      args = { "--quiet", "--fast", "-" },
-    }),
+    formatting.black,
     formatting.stylua.with({
       extra_args = {
         "--indent-type=Spaces",
