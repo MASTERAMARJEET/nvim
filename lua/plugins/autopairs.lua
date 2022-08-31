@@ -2,6 +2,8 @@ local status_ok, npairs = pcall(require, "nvim-autopairs")
 if not status_ok then
   return
 end
+local Rule = require("nvim-autopairs.rule")
+local cond = require("nvim-autopairs.conds")
 
 npairs.setup({
   check_ts = true,
@@ -23,7 +25,13 @@ npairs.setup({
     highlight_grey = "LineNr",
   },
 })
-
+npairs.add_rules({
+  Rule("\\[", "\\]", { "tex", "latex" }),
+  Rule("\\(", "\\)", { "tex", "latex" }),
+  Rule("\\left(", "\\right)", { "tex", "latex" }),
+  Rule("\\left[", "\\right]", { "tex", "latex" }),
+  Rule("\\left{", "\\right}", { "tex", "latex" }),
+})
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
