@@ -101,6 +101,7 @@ return packer.startup(function(use)
 
   -- COLORSCHEMES
   use({ "marko-cerovac/material.nvim" })
+  use({ "folke/tokyonight.nvim" })
 
   -- CODE EASY
   use({ "numToStr/Comment.nvim" })

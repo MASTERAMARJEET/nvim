@@ -1,3 +1,4 @@
+local colors = require("material.colors")
 require("material").setup({
   contrast = {
     sidebars = true, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
@@ -39,7 +40,7 @@ require("material").setup({
     eob_lines = false, -- Hide the end-of-buffer lines
   },
 
-  lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
+  lualine_style = "stealth", -- Lualine style ( can be 'stealth' or 'default' )
 
   async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
 
@@ -54,5 +55,7 @@ require("material").setup({
     darker = true, -- Enable higher contrast text for darker style
   },
 
-  custom_highlights = {}, -- Overwrite highlights with your own
+  custom_highlights = {
+    LspReferenceText = { bold = true },
+  }, -- Overwrite highlights with your own
 })
