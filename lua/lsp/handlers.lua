@@ -12,6 +12,7 @@ local lsp_formatting = function(bufnr)
     bufnr = bufnr,
   })
 end
+
 local format_on_save = augroup("format_on_save", { clear = true })
 local function lsp_format_on_save(client, bufnr)
   if client.supports_method("textDocument/formatting") then
