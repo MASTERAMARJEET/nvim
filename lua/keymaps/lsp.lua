@@ -5,10 +5,9 @@ return {
   { mode.normal, "K", "<cmd>lua vim.lsp.buf.hover()<CR>" },
   { mode.normal, "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>" },
   { mode.normal, "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>" },
-  -- { mode.normal, "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>" },
-  { mode.normal, "gr", "<cmd>lua vim.lsp.buf.references()<CR>" },
-  -- { mode.normal, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>" },
-  -- { mode.normal, "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>" },
+  { mode.normal, "gr", "<cmd>lua vim.lsp.buf.rename()<CR>" },
+  { mode.normal, "gR", "<cmd>lua vim.lsp.buf.references()<CR>" },
+  { mode.normal, "g.", "<cmd>lua vim.lsp.buf.code_action()<CR>" },
   {
     mode.normal,
     "[d",
@@ -16,7 +15,7 @@ return {
   },
   {
     mode.normal,
-    "gl",
+    "gk",
     '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
   },
   {

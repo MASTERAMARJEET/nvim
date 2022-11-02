@@ -45,12 +45,10 @@ return {
 
   l = {
     name = "LSP",
-    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     d = {
-      "<cmd>lua _TELESCOPE('diagnostics',nil, {bufnr = 0})<cr>",
-      "Document Diagnostics",
+      "<cmd>lua _TELESCOPE('diagnostics', 'ivy')<cr>",
+      "Workspace Diagnostics",
     },
-    w = { "<cmd>lua _TELESCOPE('diagnostics')<cr>", "Workspace Diagnostics" },
     f = { "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>Mason<cr>", "Installer Info" },
@@ -58,7 +56,6 @@ return {
     k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     s = {
       "<cmd>lua _TELESCOPE('lsp_document_symbols')<cr>",
       "Document Symbols",

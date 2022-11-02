@@ -11,7 +11,7 @@ local list = {
   { key = "P", cb = tree_cb("parent_node") },
   { key = "<BS>", cb = tree_cb("close_node") },
   { key = "<S-CR>", cb = tree_cb("close_node") },
-  { key = "<Space>", cb = tree_cb("preview") },
+  { key = ",", cb = tree_cb("preview") },
   { key = "K", cb = tree_cb("first_sibling") },
   { key = "J", cb = tree_cb("last_sibling") },
   { key = "I", cb = tree_cb("toggle_ignored") },

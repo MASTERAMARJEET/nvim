@@ -2,12 +2,13 @@ local helpers = require("keymaps.helpers")
 local mode = helpers.mode
 local opts = helpers.opts
 
---Remap "," as leader key
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
+--Remap "space" as leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 local global = {
-  { mode.normal, ";", ":", opts.nosilent },
+  --[[ { mode.normal, ";", ":", opts.nosilent }, ]]
+  { mode.normal, "<Space>", "<Nop>" },
 
   -- disable arrow keys in normal mode
   { mode.normal, "<Down>", "<Nop>" },
@@ -33,10 +34,11 @@ local global = {
   { mode.insert, "<C-j>", "<C-\\><C-N><C-w>j" },
   { mode.insert, "<C-k>", "<C-\\><C-N><C-w>k" },
   { mode.insert, "<C-l>", "<C-\\><C-N><C-w>l" },
-  { mode.term, "<C-h>", "<C-\\><C-N><C-w>h", opts.term },
-  { mode.term, "<C-j>", "<C-\\><C-N><C-w>j", opts.term },
-  { mode.term, "<C-k>", "<C-\\><C-N><C-w>k", opts.term },
-  { mode.term, "<C-l>", "<C-\\><C-N><C-w>l", opts.term },
+  { mode.term, "<C-]>", "<C-\\><C-N>" },
+  --[[ { mode.term, "<C-h>", "<C-\\><C-N><C-w>h", opts.term }, ]]
+  --[[ { mode.term, "<C-j>", "<C-\\><C-N><C-w>j", opts.term }, ]]
+  --[[ { mode.term, "<C-k>", "<C-\\><C-N><C-w>k", opts.term }, ]]
+  --[[ { mode.term, "<C-l>", "<C-\\><C-N><C-w>l", opts.term }, ]]
 
   -- Move text up and down
   { mode.visual, "J", ":move '>+1<CR>gv=gv" },
