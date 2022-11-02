@@ -3,7 +3,7 @@ function _TELESCOPE(picker, theme)
   local theme_args = {}
   if not theme then
     -- no theme => default (horizontal)
-    local horizontal_config = { layout_config = { preview_width = 0.6 } }
+    local horizontal_config = { layout_config = { preview_width = 0.5 } }
     theme_args = horizontal_config
   elseif theme == "dropdown" then
     local size = 0.8
