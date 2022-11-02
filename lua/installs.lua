@@ -48,7 +48,7 @@ return packer.startup(function(use)
   use({ "wbthomason/packer.nvim" }) -- Have packer manage itself
 
   -- USED BY OTHER PLUGINS
-  use({ "kyazdani42/nvim-web-devicons" })
+  use({ "nvim-tree/nvim-web-devicons" })
   use({ "nvim-lua/popup.nvim" })
   use({ "nvim-lua/plenary.nvim" })
 
@@ -56,7 +56,7 @@ return packer.startup(function(use)
   use({ "hrsh7th/nvim-cmp" })
   use({ "hrsh7th/cmp-buffer" })
   use({ "hrsh7th/cmp-path" })
-  use({ "hrsh7th/cmp-cmdline" })
+  --[[ use({ "hrsh7th/cmp-cmdline" }) ]]
   use({ "saadparwaiz1/cmp_luasnip" })
   use({ "hrsh7th/cmp-nvim-lsp" })
   use({ "hrsh7th/cmp-nvim-lua" })
@@ -67,6 +67,7 @@ return packer.startup(function(use)
   use({ "williamboman/mason-lspconfig.nvim" })
   use({ "tamago324/nlsp-settings.nvim" })
   use({ "jose-elias-alvarez/null-ls.nvim" })
+  --[[ use({ "glepnir/lspsaga.nvim" }) ]]
 
   -- SNIPPETS
   use({ "L3MON4D3/LuaSnip" }) --snippet engine
@@ -90,7 +91,7 @@ return packer.startup(function(use)
   use({ "folke/which-key.nvim" })
 
   -- BETTER UI
-  use({ "kyazdani42/nvim-tree.lua" })
+  use({ "nvim-tree/nvim-tree.lua" })
   use({ "nvim-lualine/lualine.nvim" })
   use({
     "akinsho/bufferline.nvim",

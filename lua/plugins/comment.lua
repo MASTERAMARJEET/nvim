@@ -58,9 +58,6 @@ comment.setup({
     ---Extra mapping
     ---Includes `gco`, `gcO`, `gcA`
     extra = true,
-    ---Extended mapping
-    ---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
-    extended = true,
   },
 
   ---Pre-hook, called before commenting the line
@@ -69,10 +66,8 @@ comment.setup({
     local U = require("Comment.utils")
 
     local location = nil
-    local ts_status_ok, ts_comment_utils = pcall(
-      require,
-      "ts_context_commentstring.utils"
-    )
+    local ts_status_ok, ts_comment_utils =
+      pcall(require, "ts_context_commentstring.utils")
     if not ts_status_ok then
       return
     end

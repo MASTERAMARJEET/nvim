@@ -19,7 +19,6 @@ mason_lspconfig.setup({
 })
 
 for _, server in pairs(servers) do
-  --[[ print(server) ]]
   if server == "jsonls" then
     local jsonls_opts = require("lsp.settings.jsonls")
     opts = vim.tbl_deep_extend("force", jsonls_opts, opts)

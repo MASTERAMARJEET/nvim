@@ -12,6 +12,9 @@ local keymaps = require("keymaps.nvim-tree")
 local signs = require("utils").diagnostics_signs
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
+vim.g.loaded_netwr = 1
+vim.g.loaded_netwrPlugin = 1
+
 nvim_tree.setup({
   auto_reload_on_write = true,
   create_in_closed_folder = false,
@@ -116,7 +119,7 @@ nvim_tree.setup({
     ignore_list = {},
   },
   system_open = {
-    cmd = nil,
+    cmd = "",
     args = {},
   },
   filters = {
@@ -138,7 +141,6 @@ nvim_tree.setup({
     adaptive_size = false,
     centralize_selection = false,
     width = 30,
-    height = 30,
     hide_root_folder = false,
     side = "right",
     preserve_window_proportions = false,
@@ -151,6 +153,7 @@ nvim_tree.setup({
     },
     float = {
       enable = false,
+      quit_on_focus_loss = true,
       open_win_config = {
         relative = "editor",
         border = "rounded",

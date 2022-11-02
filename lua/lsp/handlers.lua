@@ -29,7 +29,7 @@ end
 
 local lsp_doc_highlight_grp = augroup("lsp_document_highlight", {})
 local function lsp_highlight_document(client, bufnr)
-  if client.supports_method("textDocument/document_highlight") then
+  if client.supports_method("textDocument/documentHighlight") then
     clear_autocmds({
       group = lsp_doc_highlight_grp,
       buffer = bufnr,
@@ -70,6 +70,6 @@ if not status_ok then
   return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M
