@@ -46,6 +46,7 @@ local branch = {
 local progress = function()
   local current_line = vim.fn.line(".")
   local total_lines = vim.fn.line("$")
+  local current_col = vim.fn.col(".")
   local chars = {
     "__",
     "▁▁",
@@ -59,7 +60,7 @@ local progress = function()
   }
   local line_ratio = math.floor(current_line / total_lines * 100)
   local index = math.ceil(line_ratio * #chars)
-  return "" .. current_line .. "/" .. total_lines .. ":" .. line_ratio .. "%%"
+  return "" .. current_line .. "/" .. total_lines .. ":" .. current_col
 end
 
 local location = {
@@ -84,8 +85,8 @@ lualine.setup({
   },
   sections = {
     lualine_a = { mode },
-    lualine_b = { branch },
-    lualine_c = { diff },
+    lualine_b = { branch, diff },
+    lualine_c = { "filename" },
     -- lualine_x = { "encoding", "fileformat", "filetype" },
     lualine_x = { diagnostics, spaces, "encoding" },
     lualine_y = { filetype },
