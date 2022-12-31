@@ -13,7 +13,7 @@ require("plugins.toggleterm")
 require("plugins.gitsigns")
 
 require("plugins.cmp")
-require("plugins.autopairs") -- require these after nvim-cmp
+-- require("plugins.autopairs") -- require these after nvim-cmp
 
 require("lsp")
 
