@@ -49,6 +49,7 @@ return {
       "<cmd>lua _TELESCOPE('diagnostics', 'ivy')<cr>",
       "Workspace Diagnostics",
     },
+    r = { "<cmd>LspRestart<cr>", "Restart" },
     f = { "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>Mason<cr>", "Installer Info" },
@@ -78,6 +79,7 @@ return {
 
   t = {
     name = "Terminal",
+    w = { "<cmd>lua _WATCH_TOGGLE()<cr>", "Watch" },
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
     u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
     t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
