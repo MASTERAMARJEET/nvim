@@ -18,7 +18,7 @@ autocmd("FileType", {
 autocmd("TextYankPost", {
   group = general_settings,
   callback = function()
-    require("vim.highlight").on_yank({ higroup = "Visual", timeout = 200 })
+    require("vim.highlight").on_yank({ higroup = "Visual", timeout = 100 })
   end,
 })
 autocmd("BufWinEnter", {
@@ -29,6 +29,11 @@ autocmd("FileType", {
   group = general_settings,
   pattern = "qt",
   command = "set nobuflisted",
+})
+vim.api.nvim_create_autocmd("BufWritePost", {
+  group = general_settings,
+  pattern = "*/.config/nvim/*.lua",
+  command = "source <afile>",
 })
 
 autocmd("BufWritePre", {

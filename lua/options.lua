@@ -2,7 +2,9 @@ local options = {
   backup = false, -- creates a backup file
   cmdheight = 1, -- more space in the neovim command line for displaying messages
   laststatus = 3, -- common statusline for all windows
-  completeopt = { "menuone", "noselect" }, -- mostly just for cmp
+  winbar = "%f%m",
+  showtabline = 2, -- always show tabs
+  completeopt = { "menuone", "noselect" }, -- better completion experience
   conceallevel = 0, -- so that `` is visible in markdown files
   fileencoding = "utf-8", -- the encoding written to a file
   foldmethod = "expr", -- folding, set to "expr" for treesitter based folding
@@ -11,6 +13,7 @@ local options = {
   hlsearch = false, -- highlight all matches on previous search pattern
   incsearch = true,
   ignorecase = true, -- ignore case in search patterns
+  smartcase = true,
   list = true, -- show special charcaters for tab and trailing spaces
   listchars = { tab = "→ ", trail = "¬" },
   -- listchars = {"tab" ="↦ ","trail"="¬"},
@@ -18,9 +21,6 @@ local options = {
   mouse = "a", -- allow the mouse to be used in neovim
   pumheight = 10, -- pop up menu height
   showmode = false, -- we don't need to see things like -- INSERT -- anymore
-  showtabline = 2, -- always show tabs
-  autoindent = true,
-  smartcase = true, -- smart case
   smartindent = true, -- make indenting smarter again
   splitbelow = true, -- force all horizontal splits to go below current window
   splitright = true, -- force all vertical splits to go to the right of current window
@@ -30,6 +30,8 @@ local options = {
   undofile = true, -- enable persistent undo
   updatetime = 100, -- faster completion (4000ms default)
   writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+  breakindent = true,
+  autoindent = true,
   expandtab = true, -- convert tabs to spaces
   shiftwidth = 2, -- the number of spaces inserted for each indentation
   tabstop = 2, -- insert 2 spaces for a tab
@@ -54,4 +56,3 @@ end
 
 vim.cmd("set whichwrap+=<,>,[,]")
 vim.cmd([[set iskeyword+=-]])
-vim.cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work

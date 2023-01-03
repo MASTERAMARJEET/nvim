@@ -1,6 +1,5 @@
 local helpers = require("keymaps.helpers")
 local mode = helpers.mode
-local opts = helpers.opts
 
 --Remap "space" as leader key
 vim.g.mapleader = " "
@@ -60,3 +59,4 @@ local global = {
 }
 
 helpers.load_keymaps(global)
+
