@@ -103,7 +103,6 @@ local server_mapping = {
   ["sqlls"] = "sqlls",
   ["sqls"] = "sqls",
   ["stylelint-lsp"] = "stylelint_lsp",
-  ["lua-language-server"] = "sumneko_lua",
   ["svelte-language-server"] = "svelte",
   ["svlangserver"] = "svlangserver",
   ["svls"] = "svls",

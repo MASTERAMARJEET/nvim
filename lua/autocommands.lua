@@ -40,7 +40,7 @@ autocmd("BufWritePre", {
   group = augroup("_lsp", { clear = true }),
   callback = function()
     vim.lsp.buf.format()
-  end
+  end,
 })
 -- build pdf on save
 local latex = augroup("_latex", { clear = true })
