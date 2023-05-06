@@ -44,7 +44,7 @@ return {
     "folke/noice.nvim",
     opts = {
       cmdline = {
-        enabled = true,
+        enabled = false,
         view = "cmdline",
         format = {
           cmdline = {
@@ -67,19 +67,52 @@ return {
           },
         },
       },
-    },
-    routes = {
-      {
-        view = "notify",
-        filter = { event = "msg_showmode" },
+      messages = {
+        enabled = false,
       },
-      {
-        filter = {
-          event = "msg_show",
-          kind = "",
-          find = "written",
+      routes = {
+        {
+          view = "notify",
+          filter = { event = "msg_showmode" },
         },
-        opts = { skip = true },
+        {
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "written",
+          },
+          opts = { skip = true },
+        },
+      },
+      ---@class NoiceConfigViews: table<string, NoiceViewOptions>
+      views = {
+        mini = {
+          backend = "mini",
+          relative = "editor",
+          align = "message-right",
+          timeout = 2000,
+          reverse = true,
+          focusable = false,
+          position = {
+            row = vim.fn.winheight(0) - 1,
+            col = "100%",
+            -- col = 0,
+          },
+          size = "auto",
+          border = {
+            style = "none",
+          },
+          zindex = 60,
+          win_options = {
+            winblend = 30,
+            winhighlight = {
+              Normal = "NoiceMini",
+              IncSearch = "",
+              CurSearch = "",
+              Search = "",
+            },
+          },
+        },
       },
     },
   },
