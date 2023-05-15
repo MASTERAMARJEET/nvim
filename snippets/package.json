@@ -1,0 +1,17 @@
+{
+  "name": "custom-snippets",
+  "engine": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "plaintex",
+          "tex"
+        ],
+        "path": "./latex.json"
+      }
+    ]
+  }
+}
