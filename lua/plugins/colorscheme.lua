@@ -13,4 +13,15 @@ return {
       colorscheme = "material",
     },
   },
+  -- tokyonight
+  {
+    "folke/tokyonight.nvim",
+    enabled = false,
+  },
+
+  -- catppuccin
+  {
+    "catppuccin/nvim",
+    enabled = false,
+  },
 }

@@ -39,6 +39,9 @@ return {
   -- lsp symbol navigation
   { "SmiteshP/nvim-navic", enabled = false },
 
+  -- dashboard
+  { "goolord/alpha-nvim", enabled = false },
+
   -- noicer ui
   {
     "folke/noice.nvim",
