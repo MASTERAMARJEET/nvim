@@ -2,6 +2,7 @@ return {
   -- material
   {
     "marko-cerovac/material.nvim",
+    enabled = false,
     lazy = true,
     config = function()
       vim.g.material_style = "deep ocean"
@@ -10,7 +11,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "material",
+      colorscheme = "catppuccin",
     },
   },
   -- tokyonight
@@ -22,6 +23,6 @@ return {
   -- catppuccin
   {
     "catppuccin/nvim",
-    enabled = false,
+    enabled = true,
   },
 }
