@@ -1,5 +1,19 @@
 return {
 
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      local cmp = require("cmp")
+      opts.completion.completeopt = "menu,menuone,noinsert,noselect"
+      opts.mapping["<CR>"] = cmp.mapping.confirm({ select = false })
+      opts.mapping["<S-CR>"] = cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = false,
+      })
+      return opts
+    end,
+  },
+
   -- snippets
   {
     "L3MON4D3/LuaSnip",
