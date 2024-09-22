@@ -56,4 +56,8 @@ return {
       { "[[", desc = "Prev Reference" },
     },
   },
+  {
+    "folke/flash.nvim",
+    enabled = false,
+  },
 }

@@ -70,16 +70,6 @@ return {
         },
       },
     },
-    init = function(_, opts)
-      require("toggleterm").setup(opts)
-      if require("lazyvim.util").has("which-key.nvim") then
-        require("which-key").register({
-          "<leader>t",
-          group = "terminal",
-          mode = { "n", "v" }
-        })
-      end
-    end,
     keys = {
       {
         "<leader>tf",
