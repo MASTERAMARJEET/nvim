@@ -10,6 +10,7 @@ return {
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
       })
+      opts.experimental.ghost_text = false
       return opts
     end,
   },
