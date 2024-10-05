@@ -40,8 +40,6 @@ return {
   { "SmiteshP/nvim-navic", enabled = false },
 
   -- dashboard
-  { "goolord/alpha-nvim", enabled = false },
-
   -- toggleterm
   {
     "akinsho/toggleterm.nvim",
