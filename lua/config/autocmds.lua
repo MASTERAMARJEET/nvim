@@ -19,3 +19,16 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end, { buffer = true })
   end,
 })
+
+-- Restore session for current dir
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  group = augroup("session"),
+  callback = function()
+    if vim.fn.argc() == 0 and vim.api.nvim_buf_get_name(0) == "" then
+      vim.schedule(function()
+        require("persistence").load()
+      end)
+    end
+  end,
+})

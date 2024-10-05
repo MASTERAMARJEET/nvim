@@ -13,6 +13,11 @@ return {
       },
     },
   },
+  -- Session management
+  {
+    "folke/persistence.nvim",
+    event = "User LazyDone",
+  },
   -- jumping
   {
     "ggandor/flit.nvim",

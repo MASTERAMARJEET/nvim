@@ -40,6 +40,10 @@ return {
   { "SmiteshP/nvim-navic", enabled = false },
 
   -- dashboard
+  {
+    "nvimdev/dashboard-nvim",
+    enabled = false,
+  },
   -- toggleterm
   {
     "akinsho/toggleterm.nvim",
