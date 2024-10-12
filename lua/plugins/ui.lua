@@ -1,3 +1,17 @@
+local custom_filename = require("lualine.components.filename"):extend()
+
+function custom_filename:init(options)
+  custom_filename.super.init(self, options)
+  self.options.path = 1
+end
+
+function custom_filename:update_status()
+  if vim.bo.filetype == "toggleterm" then
+    return "Terminal " .. vim.b.toggle_number
+  end
+  return custom_filename.super.update_status(self)
+end
+
 return {
   {
     "rcarriga/nvim-notify",
@@ -26,7 +40,7 @@ return {
                 hint = icons.diagnostics.Hint,
               },
             },
-            { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+            custom_filename,
           },
         },
       }
@@ -55,10 +69,10 @@ return {
       shade_filetypes = {},
       shade_terminals = true,
       shading_factor = 0,
-      start_in_insert = true,
+      start_in_insert = false,
       insert_mappings = true,
       persist_size = true,
-      direction = "float",
+      direction = "horizontal",
       close_on_exit = true,
       shell = vim.o.shell,
       float_opts = {
@@ -71,8 +85,16 @@ return {
           background = "Normal",
         },
       },
+      winbar = {
+        enabled = true,
+      },
     },
     keys = {
+      {
+        "<C-\\>",
+        "<cmd>ToggleTerm",
+        desc = "Show/Hide terminal",
+      },
       {
         "<leader>tf",
         "<cmd>ToggleTerm direction=float<cr>",
@@ -80,7 +102,7 @@ return {
       },
       {
         "<leader>th",
-        "<cmd>ToggleTerm direction=horizontal size=10<cr>",
+        "<cmd>ToggleTerm direction=horizontal size=15<cr>",
         desc = "Horizontal",
       },
       {
@@ -88,6 +110,7 @@ return {
         "<cmd>ToggleTerm direction=vertical size=80<cr>",
         desc = "Vertical",
       },
+      { "<leader>tr", "<cmd>ToggleTermSetName'<cr>", desc = "Rename Terminal" },
     },
   },
   {

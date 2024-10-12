@@ -13,3 +13,23 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
   end
 end
+
+local function unmap(mode, lhs, opts)
+  local keys = require("lazy.core.handler").handlers.keys
+  ---@cast keys LazyKeysHandler
+  -- do not create the keymap if a lazy keys handler exists
+  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
+    opts = opts or {}
+    opts.silent = opts.silent ~= false
+    vim.keymap.del(mode, lhs, opts)
+  end
+end
+
+-- Reset Terminal Mappings
+unmap("t", "<C-h>")
+unmap("t", "<C-j>")
+unmap("t", "<C-k>")
+unmap("t", "<C-l>")
+unmap("n", "<leader>ft")
+unmap("n", "<leader>fT")
+unmap("t", "<C-/>")
