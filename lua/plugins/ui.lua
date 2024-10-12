@@ -110,7 +110,7 @@ return {
         "<cmd>ToggleTerm direction=vertical size=80<cr>",
         desc = "Vertical",
       },
-      { "<leader>tr", "<cmd>ToggleTermSetName'<cr>", desc = "Rename Terminal" },
+      { "<leader>tr", "<cmd>ToggleTermSetName<cr>", desc = "Rename Terminal" },
     },
   },
   {
