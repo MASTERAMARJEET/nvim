@@ -26,10 +26,6 @@ local function unmap(mode, lhs, opts)
 end
 
 -- Reset Terminal Mappings
-unmap("t", "<C-h>")
-unmap("t", "<C-j>")
-unmap("t", "<C-k>")
-unmap("t", "<C-l>")
 unmap("n", "<leader>ft")
 unmap("n", "<leader>fT")
 unmap("t", "<C-/>")

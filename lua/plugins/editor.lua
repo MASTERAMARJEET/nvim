@@ -67,4 +67,8 @@ return {
     "folke/flash.nvim",
     enabled = false,
   },
+  {
+    "sindrets/diffview.nvim",
+    opts = {},
+  },
 }

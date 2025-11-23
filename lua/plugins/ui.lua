@@ -47,6 +47,16 @@ return {
     end,
   },
 
+  -- bufferline
+  {
+    "akinsho/bufferline.nvim",
+    opts = {
+      options = {
+        always_show_bufferline = true,
+      },
+    },
+  },
+
   -- indent guides for Neovim
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
 
@@ -57,6 +67,10 @@ return {
   {
     "nvimdev/dashboard-nvim",
     enabled = false,
+  },
+  {
+    "folke/snacks.nvim",
+    opts = { dashboard = { enabled = false } },
   },
   -- toggleterm
   {
@@ -72,7 +86,7 @@ return {
       start_in_insert = false,
       insert_mappings = true,
       persist_size = true,
-      direction = "horizontal",
+      direction = "float",
       close_on_exit = true,
       shell = vim.o.shell,
       float_opts = {
