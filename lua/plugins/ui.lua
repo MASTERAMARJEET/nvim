@@ -15,6 +15,7 @@ end
 return {
   {
     "rcarriga/nvim-notify",
+    enabled = false,
     opts = { render = "compact", top_down = false },
   },
 
